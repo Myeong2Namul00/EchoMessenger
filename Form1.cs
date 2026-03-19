@@ -1,7 +1,13 @@
+using System.Collections.Generic;
+using System.Drawing;
+
 namespace EchoMessenger
 {
     public partial class Form1 : Form
     {
+        private readonly Dictionary<Control, Point> _baseLocations = new();
+        private Size _baseClientSize;
+
         public Form1()
         {
             InitializeComponent();
@@ -9,6 +15,10 @@ namespace EchoMessenger
             chkTimeStamp.Checked = true;
 
             updateResults();
+
+            CaptureBaseLayout();
+            CenterLayout();
+            Resize += (_, _) => CenterLayout();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -18,6 +28,41 @@ namespace EchoMessenger
             lblDelSelectedHelp.Text = "선택한 메시지를 삭제";
             lblDelAllHelp.Text = "모든 메시지를 삭제";
             lblStrictCheckHelp.Text = "한글, 영어, 숫자로\n메시지를 제한";
+        }
+
+        private void CaptureBaseLayout()
+        {
+            _baseClientSize = ClientSize;
+            _baseLocations.Clear();
+
+            foreach (Control c in Controls)
+            {
+                _baseLocations[c] = c.Location;
+            }
+        }
+
+        private void CenterLayout()
+        {
+            if (_baseLocations.Count == 0)
+            {
+                return;
+            }
+
+            var dx = (ClientSize.Width - _baseClientSize.Width) / 2;
+            var dy = (ClientSize.Height - _baseClientSize.Height) / 2;
+
+            SuspendLayout();
+            try
+            {
+                foreach (var kvp in _baseLocations)
+                {
+                    kvp.Key.Location = new Point(kvp.Value.X + dx, kvp.Value.Y + dy);
+                }
+            }
+            finally
+            {
+                ResumeLayout();
+            }
         }
 
         private string addTimeStamp(string message)
