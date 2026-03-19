@@ -52,6 +52,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(761, 49);
             textBox1.TabIndex = 1;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // listBox1
             // 
@@ -85,6 +86,7 @@
             Controls.Add(listBox1);
             Controls.Add(textBox1);
             Controls.Add(label1);
+            AcceptButton = button1;
             Name = "Form1";
             Text = "Echo Messenger";
             Load += Form1_Load;
