@@ -28,104 +28,207 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            textBox1 = new TextBox();
-            listBox1 = new ListBox();
-            button1 = new Button();
-            checkBox1 = new CheckBox();
-            label2 = new Label();
-            label3 = new Label();
+            lblMain = new Label();
+            txtMessageBox = new TextBox();
+            lstMessageList = new ListBox();
+            btnEnter = new Button();
+            chkTimeStamp = new CheckBox();
+            lblTimeStampHelp = new Label();
+            lblMessageCount = new Label();
+            lblAutoDelHelp = new Label();
+            chkAutoDel = new CheckBox();
+            btnDelSelected = new Button();
+            lblDelSelectedHelp = new Label();
+            lblDelAllHelp = new Label();
+            btnDelAll = new Button();
+            lblStrictCheckHelp = new Label();
+            chkStrictCheck = new CheckBox();
             SuspendLayout();
             // 
-            // label1
+            // lblMain
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("궁서", 48F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            label1.Location = new Point(12, 14);
-            label1.Name = "label1";
-            label1.Size = new Size(617, 64);
-            label1.TabIndex = 0;
-            label1.Text = "ECHO MESSENGER";
+            lblMain.AutoSize = true;
+            lblMain.Font = new Font("궁서", 48F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            lblMain.Location = new Point(12, 14);
+            lblMain.Name = "lblMain";
+            lblMain.Size = new Size(617, 64);
+            lblMain.TabIndex = 0;
+            lblMain.Text = "ECHO MESSENGER";
             // 
-            // textBox1
+            // txtMessageBox
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("한컴 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            textBox1.Location = new Point(12, 501);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(761, 49);
-            textBox1.TabIndex = 1;
-            textBox1.KeyDown += textBox1_KeyDown;
+            txtMessageBox.BorderStyle = BorderStyle.FixedSingle;
+            txtMessageBox.Font = new Font("한컴 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtMessageBox.Location = new Point(12, 501);
+            txtMessageBox.Name = "txtMessageBox";
+            txtMessageBox.Size = new Size(761, 49);
+            txtMessageBox.TabIndex = 1;
+            txtMessageBox.KeyDown += textBox1_KeyDown;
             // 
-            // listBox1
+            // lstMessageList
             // 
-            listBox1.Font = new Font("한컴 고딕", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(12, 97);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(761, 389);
-            listBox1.TabIndex = 2;
+            lstMessageList.Font = new Font("한컴 고딕", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lstMessageList.FormattingEnabled = true;
+            lstMessageList.Location = new Point(12, 97);
+            lstMessageList.Name = "lstMessageList";
+            lstMessageList.Size = new Size(761, 389);
+            lstMessageList.TabIndex = 2;
             // 
-            // button1
+            // btnEnter
             // 
-            button1.BackColor = Color.White;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("한컴 고딕", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            button1.Location = new Point(784, 501);
-            button1.Name = "button1";
-            button1.Size = new Size(116, 49);
-            button1.TabIndex = 3;
-            button1.Text = "ENTER";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnEnter.BackColor = Color.White;
+            btnEnter.FlatStyle = FlatStyle.Flat;
+            btnEnter.Font = new Font("한컴 고딕", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btnEnter.Location = new Point(784, 501);
+            btnEnter.Name = "btnEnter";
+            btnEnter.Size = new Size(116, 49);
+            btnEnter.TabIndex = 3;
+            btnEnter.Text = "ENTER";
+            btnEnter.UseVisualStyleBackColor = false;
+            btnEnter.Click += button1_Click;
             // 
-            // checkBox1
+            // chkTimeStamp
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("한컴 고딕", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            checkBox1.Location = new Point(779, 97);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(133, 29);
-            checkBox1.TabIndex = 4;
-            checkBox1.Text = "TimeStamp";
-            checkBox1.UseVisualStyleBackColor = true;
+            chkTimeStamp.AutoSize = true;
+            chkTimeStamp.Font = new Font("한컴 고딕", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            chkTimeStamp.Location = new Point(779, 131);
+            chkTimeStamp.Name = "chkTimeStamp";
+            chkTimeStamp.Size = new Size(133, 29);
+            chkTimeStamp.TabIndex = 4;
+            chkTimeStamp.Text = "TimeStamp";
+            chkTimeStamp.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lblTimeStampHelp
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("한컴 고딕", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label2.Location = new Point(779, 124);
-            label2.Name = "label2";
-            label2.Size = new Size(98, 16);
-            label2.TabIndex = 5;
-            label2.Text = "타임스탬프 도움말";
+            lblTimeStampHelp.AutoSize = true;
+            lblTimeStampHelp.Font = new Font("한컴 고딕", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblTimeStampHelp.Location = new Point(774, 158);
+            lblTimeStampHelp.Name = "lblTimeStampHelp";
+            lblTimeStampHelp.Size = new Size(98, 16);
+            lblTimeStampHelp.TabIndex = 5;
+            lblTimeStampHelp.Text = "타임스탬프 도움말";
             // 
-            // label3
+            // lblMessageCount
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(255, 255, 192);
-            label3.FlatStyle = FlatStyle.Flat;
-            label3.Font = new Font("한컴 고딕", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            label3.Location = new Point(781, 469);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 21);
-            label3.TabIndex = 6;
-            label3.Text = "대화 횟수 : 00개";
+            lblMessageCount.AutoSize = true;
+            lblMessageCount.BackColor = Color.FromArgb(255, 255, 192);
+            lblMessageCount.FlatStyle = FlatStyle.Flat;
+            lblMessageCount.Font = new Font("한컴 고딕", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            lblMessageCount.Location = new Point(779, 97);
+            lblMessageCount.Name = "lblMessageCount";
+            lblMessageCount.Size = new Size(120, 21);
+            lblMessageCount.TabIndex = 6;
+            lblMessageCount.Text = "대화 횟수 : 00개";
+            // 
+            // lblAutoDelHelp
+            // 
+            lblAutoDelHelp.AutoSize = true;
+            lblAutoDelHelp.Font = new Font("한컴 고딕", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblAutoDelHelp.Location = new Point(774, 210);
+            lblAutoDelHelp.Name = "lblAutoDelHelp";
+            lblAutoDelHelp.Size = new Size(87, 16);
+            lblAutoDelHelp.TabIndex = 8;
+            lblAutoDelHelp.Text = "자동삭제 도움말";
+            // 
+            // chkAutoDel
+            // 
+            chkAutoDel.AutoSize = true;
+            chkAutoDel.Font = new Font("한컴 고딕", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            chkAutoDel.Location = new Point(779, 183);
+            chkAutoDel.Name = "chkAutoDel";
+            chkAutoDel.Size = new Size(131, 29);
+            chkAutoDel.TabIndex = 7;
+            chkAutoDel.Text = "AutoDelete";
+            chkAutoDel.UseVisualStyleBackColor = true;
+            // 
+            // btnDelSelected
+            // 
+            btnDelSelected.BackColor = Color.White;
+            btnDelSelected.FlatStyle = FlatStyle.Flat;
+            btnDelSelected.Font = new Font("한컴 고딕", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btnDelSelected.Location = new Point(779, 375);
+            btnDelSelected.Name = "btnDelSelected";
+            btnDelSelected.Size = new Size(121, 32);
+            btnDelSelected.TabIndex = 9;
+            btnDelSelected.Text = "선택 대화 삭제";
+            btnDelSelected.UseVisualStyleBackColor = false;
+            btnDelSelected.Click += btnDelSelected_Click;
+            // 
+            // lblDelSelectedHelp
+            // 
+            lblDelSelectedHelp.AutoSize = true;
+            lblDelSelectedHelp.Font = new Font("한컴 고딕", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblDelSelectedHelp.Location = new Point(779, 410);
+            lblDelSelectedHelp.Name = "lblDelSelectedHelp";
+            lblDelSelectedHelp.Size = new Size(109, 16);
+            lblDelSelectedHelp.TabIndex = 10;
+            lblDelSelectedHelp.Text = "선택대화삭제 도움말";
+            // 
+            // lblDelAllHelp
+            // 
+            lblDelAllHelp.AutoSize = true;
+            lblDelAllHelp.Font = new Font("한컴 고딕", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblDelAllHelp.Location = new Point(779, 467);
+            lblDelAllHelp.Name = "lblDelAllHelp";
+            lblDelAllHelp.Size = new Size(109, 16);
+            lblDelAllHelp.TabIndex = 12;
+            lblDelAllHelp.Text = "모든대화삭제 도움말";
+            // 
+            // btnDelAll
+            // 
+            btnDelAll.BackColor = Color.White;
+            btnDelAll.FlatStyle = FlatStyle.Flat;
+            btnDelAll.Font = new Font("한컴 고딕", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            btnDelAll.Location = new Point(779, 432);
+            btnDelAll.Name = "btnDelAll";
+            btnDelAll.Size = new Size(121, 32);
+            btnDelAll.TabIndex = 11;
+            btnDelAll.Text = "모든 대화 삭제";
+            btnDelAll.UseVisualStyleBackColor = false;
+            btnDelAll.Click += btnDelAll_Click;
+            // 
+            // lblStrictCheckHelp
+            // 
+            lblStrictCheckHelp.AutoSize = true;
+            lblStrictCheckHelp.Font = new Font("한컴 고딕", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblStrictCheckHelp.Location = new Point(774, 282);
+            lblStrictCheckHelp.Name = "lblStrictCheckHelp";
+            lblStrictCheckHelp.Size = new Size(98, 16);
+            lblStrictCheckHelp.TabIndex = 14;
+            lblStrictCheckHelp.Text = "문자열체크 도움말";
+            // chkStrictCheck
+            // 
+            chkStrictCheck.AutoSize = true;
+            chkStrictCheck.Font = new Font("한컴 고딕", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            chkStrictCheck.Location = new Point(779, 255);
+            chkStrictCheck.Name = "chkStrictCheck";
+            chkStrictCheck.Size = new Size(130, 29);
+            chkStrictCheck.TabIndex = 13;
+            chkStrictCheck.Text = "StrictCheck";
+            chkStrictCheck.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            AcceptButton = button1;
+            AcceptButton = btnEnter;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(912, 562);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(checkBox1);
-            Controls.Add(button1);
-            Controls.Add(listBox1);
-            Controls.Add(textBox1);
-            Controls.Add(label1);
+            Controls.Add(lblStrictCheckHelp);
+            Controls.Add(chkStrictCheck);
+            Controls.Add(lblDelAllHelp);
+            Controls.Add(btnDelAll);
+            Controls.Add(lblDelSelectedHelp);
+            Controls.Add(btnDelSelected);
+            Controls.Add(lblAutoDelHelp);
+            Controls.Add(chkAutoDel);
+            Controls.Add(lblMessageCount);
+            Controls.Add(lblTimeStampHelp);
+            Controls.Add(chkTimeStamp);
+            Controls.Add(btnEnter);
+            Controls.Add(lstMessageList);
+            Controls.Add(txtMessageBox);
+            Controls.Add(lblMain);
             Name = "Form1";
             Text = "Echo Messenger";
             Load += Form1_Load;
@@ -135,12 +238,20 @@
 
         #endregion
 
-        private Label label1;
-        private TextBox textBox1;
-        private ListBox listBox1;
-        private Button button1;
-        private CheckBox checkBox1;
-        private Label label2;
-        private Label label3;
+        private Label lblMain;
+        private TextBox txtMessageBox;
+        private ListBox lstMessageList;
+        private Button btnEnter;
+        private CheckBox chkTimeStamp;
+        private Label lblTimeStampHelp;
+        private Label lblMessageCount;
+        private Label lblAutoDelHelp;
+        private CheckBox chkAutoDel;
+        private Button btnDelSelected;
+        private Label lblDelSelectedHelp;
+        private Label lblDelAllHelp;
+        private Button btnDelAll;
+        private Label lblStrictCheckHelp;
+        private CheckBox chkStrictCheck;
     }
 }

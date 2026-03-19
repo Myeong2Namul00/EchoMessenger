@@ -6,14 +6,18 @@ namespace EchoMessenger
         {
             InitializeComponent();
 
-            checkBox1.Checked = true;
+            chkTimeStamp.Checked = true;
 
             updateResults();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label2.Text = "자동으로 타임스탬프를\n추가할지 선택합니다";
+            lblTimeStampHelp.Text = "자동으로 타임스탬프 추가";
+            lblAutoDelHelp.Text = "메시지가 10개를 넘으면\n오래된 메시지를 삭제";
+            lblDelSelectedHelp.Text = "선택한 메시지를 삭제";
+            lblDelAllHelp.Text = "모든 메시지를 삭제";
+            lblStrictCheckHelp.Text = "한글, 영어, 숫자로\n메시지를 제한";
         }
 
         private string addTimeStamp(string message)
@@ -24,32 +28,41 @@ namespace EchoMessenger
 
         private void updateResults()
         {
-            if (listBox1.Items.Count == 0)
+            if (chkAutoDel.Checked == true)
             {
-                label3.Text = "대화 횟수 : 없음";
+                while (lstMessageList.Items.Count > 10)
+                {
+                    lstMessageList.Items.RemoveAt(0);
+                }
+            } // 오래된 메시지 삭제
+
+            if (lstMessageList.Items.Count == 0)
+            {
+                lblMessageCount.Text = "대화 횟수 : 없음";
                 return;
             }
-            else if (listBox1.Items.Count > 99)
+            else if (lstMessageList.Items.Count > 99)
             {
-                label3.Text = "대화 횟수 : 99+";
+                lblMessageCount.Text = "대화 횟수 : 99+";
                 return;
             }
-            else if (listBox1.Items.Count < 10)
+            else if (lstMessageList.Items.Count < 10)
             {
-                label3.Text = $"대화 횟수 : 0{listBox1.Items.Count}개";
+                lblMessageCount.Text = $"대화 횟수 : 0{lstMessageList.Items.Count}개";
                 return;
             }
             else
             {
-                label3.Text = $"대화 횟수 : {listBox1.Items.Count}개";
-            }
+                lblMessageCount.Text = $"대화 횟수 : {lstMessageList.Items.Count}개";
+            } // 대화 횟수 업데이트
+
         } // 메시지 정리
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1.PerformClick();
+                btnEnter.PerformClick();
                 e.SuppressKeyPress = true;
             }
         }
@@ -58,39 +71,75 @@ namespace EchoMessenger
         {
             string typedMessage;
 
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (string.IsNullOrWhiteSpace(txtMessageBox.Text))
             {
-                textBox1.Text = "메시지를 입력해주세요.";
-                textBox1.SelectAll();
-                textBox1.Focus();
+                txtMessageBox.Text = "메시지를 입력해주세요.";
+                txtMessageBox.SelectAll();
+                txtMessageBox.Focus();
 
             }
             else
             {
-                typedMessage = textBox1.Text;
+                typedMessage = txtMessageBox.Text;
 
                 typedMessage.Trim();
 
+                if (chkStrictCheck.Checked)
+                {
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(typedMessage, @"^[a-zA-Z0-9가-힣\s]+$"))
+                    {
+                        MessageBox.Show("메시지는 한글, 영어, 숫자만 입력 가능합니다.", "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtMessageBox.SelectAll();
+                        txtMessageBox.Focus();
+                        return;
+                    } // 한글 영어 숫자만 가능하게
+                }
+
+                if (typedMessage.Length > 30)
+                {
+                    MessageBox.Show("메시지는 최대 30자까지 입력 가능합니다.", "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMessageBox.SelectAll();
+                    txtMessageBox.Focus();
+                    return;
+                }
+
                 if (typedMessage == "메시지를 입력해주세요.")
                 {
-                    textBox1.SelectAll();
-                    textBox1.Focus();
+                    txtMessageBox.SelectAll();
+                    txtMessageBox.Focus();
                     return;
                 } // 메시지를 입력해주세요면 입력 안 되게
 
-                if (checkBox1.Checked)
+                if (chkTimeStamp.Checked)
                 {
                     typedMessage = addTimeStamp(typedMessage);
                 } // 타임스탬프가 체크되었다면 타임스탬프 추가
-                
 
-                listBox1.Items.Add(typedMessage);
 
-                textBox1.Clear();
-                textBox1.Focus();
+                lstMessageList.Items.Add(typedMessage);
+
+                txtMessageBox.Clear();
+                txtMessageBox.Focus();
 
                 updateResults();
             }
+        }
+
+        private void btnDelSelected_Click(object sender, EventArgs e)
+        {
+            if (lstMessageList.SelectedIndex == -1)
+            {
+                MessageBox.Show("삭제할 메시지를 선택해주세요.", "선택 오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            lstMessageList.Items.RemoveAt(lstMessageList.SelectedIndex);
+            updateResults();
+        }
+
+        private void btnDelAll_Click(object sender, EventArgs e)
+        {
+            lstMessageList.Items.Clear();
+            updateResults();
         }
     }
 }
